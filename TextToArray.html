@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>TextToArray</title>        
+    </head>
+    
+    <body>
+        <h1>Don't have nothing here, press Ctrl+Shift+I and see the console for more information. ;)</h1>
+    </body>
+    
+    <script type="text/javascript">
+        
+        //||||| APENAS UM TESTE |||||
+        /*word = {
+            name: null,
+            value: null
+        };
+        var text = [];
+        var words = ['one','two','three'];
+        for(var i=0;i<=2;i++){
+            text.push(word);//adiciona o tipo pessoa na lista novamente
+            text[i].name = words[i];//declara o valor
+            console.log(text[i].name);//printa
+        }*/
+        //||||| APENAS UM TESTE |||||
+
+
+
+
+        //CRIANDO FUNÇÃO PARA TRANSFORMAR A INFORMAÇÃO EM UM VETOR DE PALAVRAS.
+
+        /* var frase = "adiciona uma propriedade cor ao carro1, e dá a ele o valor No entanto, isso não afeta nenhum outro objeto. Para adicionar a nova propriedade a todos os objetos do mesmo tipo, você deve adicionar a propriedade na definição do tipo de objeto carro."*/
+
+       var frase = "“A gente sempre dá um jeito”, resume Mayane Brito, 32 anos, enfermeira numa unidade de Saúde da Família em São José de Espinharas, interior da Paraíba. De carro, moto, barco ou mesmo atravessando rio a pé, com a caixa de doses sobre a cabeça, ela tem chegado até os idosos da zona rural para imunizá-los contra a Covid-19. É recebida com entusiasmo e confiança. “Porque a vacina traz isso mesmo: uma esperança”, diz. A história de Mayane, contada neste episódio, é a de milhares de profissionais que, atuando na porta de entrada do SUS, fazem com que a vacinação aconteça nos pontos mais remotos do país, não deixando nenhum brasileiro para trás. Eles já cumpriram essa missão com sucesso em diversas campanhas, e só temem mesmo a escassez de doses – fruto da falta de planejamento e de sentido de urgência por parte do governo federal. É disso que trata Ligia Bahia, especialista em saúde pública e professora da UFRJ, na entrevista a Renata Lo Prete. Ela entende a aflição de governadores e prefeitos, mas receia que a compra descentralizada de doses, agora liberada, venha a criar uma “fila dupla”, em prejuízo de regiões com menos recursos. A vacina, lembra Ligia, tem que ser como o verso da canção de Milton Nascimento: “ir aonde o povo está”."
+        //frase que será usada(coletada)
+        //fonte: https://g1.globo.com/podcast/o-assunto/noticia/2021/03/15/o-assunto-410-a-vida-na-linha-de-frente-da-vacinacao.ghtml
+
+
+        var catch_word='';//palavra que irá ser criada letra por letra, e quando surgir algo que não seja um caracter, ela irá ser resetada
+        var text_vector = [];//vetor final(geral) com as palavras.
+        
+        /*CONVERT TEXT.
+        Serve para converter um texto, em um vetor de palavras.
+
+        irá começar com i=0, i irá até o tamanho_do_texto-1.
+        ele irá fazer uma verificação, caractere por caractere, verificando se é um caractere, se não for ele irá adicionar o caractere a variavel catch_word, e com isso irá formando a palavra.
+        se for identificado uma QUEBRA DE LINHA, ou um ESPAÇO, a palavra armazenada na catch_word irá ser armazenada no text_vector(vetor final), e assim segue.
+        */
+
+        function transformToArray(){
+            for(var i=0; i<frase.length; i++){
+                
+                if((frase[i]=="\n") || (frase[i]==" ")){//Se ouver um espaço ou uma quebra de linha, ele irá entrar.
+                   // console.log("||primeiro if||");//printa, apenas para testes
+                    text_vector.push(catch_word);//adiciona a palavra completa no vetor geral.
+                    catch_word='';//zera a palavra.   
+                }else if(i+1==frase.length){//se estiver no final da frase ele irá entrar
+                   // console.log("||segundo if||");//printa, apenas para teste
+                    catch_word+=frase[i];//concatena
+                    text_vector.push(catch_word);//joga pro array geral
+                    catch_word='';//zera a palavra.
+                }else{
+                   // console.log("||terceiro||");//printa apenas para teste
+                    catch_word+=frase[i];//concatena
+                }
+            }
+        }
+        transformToArray();//chamando a função que irá converter.
+        
+        console.log(text_vector);//printo o vetor text_vector de modo geral.
+        
+        //laço para printar palavra por palavra
+        for(i=0;i<frase.length;i++){
+            console.log(' '+text_vector[i]+' ');
+        }
+      
+        
+
+        </script>
+</html>
